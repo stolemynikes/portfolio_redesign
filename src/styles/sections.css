@@ -78,7 +78,7 @@
 }
 
 .hero-headline {
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-4);
 }
 
 .hero-lower {
@@ -86,19 +86,20 @@
 }
 
 .hero-intro {
-  grid-column: 1 / 5;
+  grid-column: 1 / 6;
   color: var(--c-ink);
   line-height: 1.9;
+  max-width: 34ch;
 }
 
 .hero-media {
-  grid-column: 6 / 13;
-  margin-top: calc(-1 * var(--sp-6));
+  grid-column: 7 / 13;
+  margin-top: calc(-1 * var(--sp-4));
 }
 
 .hero-portrait {
-  aspect-ratio: 3 / 4;
-  max-height: 78vh;
+  aspect-ratio: 4 / 5;
+  max-height: 72vh;
   width: 100%;
   overflow: hidden;
   background: #e9ded0;
