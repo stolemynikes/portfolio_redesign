@@ -7,10 +7,20 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   overflow: hidden;
   background: var(--c-bg);
+}
+
+/* Ripple dot-grid canvas — sits above the warm wash, behind content */
+.ripple-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
 }
 
 /* Layer 1 — two oversized, heavily-blurred warm light pools that
@@ -21,11 +31,11 @@
   position: absolute;
   inset: -40%;
   background:
-    radial-gradient(38% 44% at 28% 30%, rgba(168, 56, 72, 0.22), transparent 68%),
-    radial-gradient(46% 50% at 78% 68%, rgba(232, 168, 96, 0.28), transparent 70%),
-    radial-gradient(42% 44% at 60% 10%, rgba(122, 39, 53, 0.16), transparent 68%);
+    radial-gradient(38% 44% at 28% 30%, rgba(168, 56, 72, 0.16), transparent 68%),
+    radial-gradient(46% 50% at 78% 68%, rgba(232, 168, 96, 0.2), transparent 70%),
+    radial-gradient(42% 44% at 60% 10%, rgba(122, 39, 53, 0.12), transparent 68%);
   filter: blur(40px);
-  animation: backdrop-drift 22s ease-in-out infinite alternate;
+  animation: backdrop-drift 40s ease-in-out infinite alternate;
   will-change: transform;
 }
 
