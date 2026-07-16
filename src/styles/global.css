@@ -1,0 +1,193 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--c-accent);
+  color: var(--c-bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* ---------- Layout shell ---------- */
+.shell {
+  display: flex;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 0 var(--content-pad);
+}
+
+/* 12-column grid helper */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+section {
+  padding-block: calc(var(--sp-section) / 2);
+}
+
+/* ---------- Typography primitives ---------- */
+.label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+}
+
+.heading-1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  text-transform: uppercase;
+}
+
+/* ---------- Reveal primitives (GSAP hooks) ---------- */
+/* Lines produced by splitLines() get masked; JS animates the inner span */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+}
+.reveal-line > .reveal-line-inner {
+  display: block;
+  will-change: transform;
+}
+
+/* Media reveal: JS animates opacity + scale */
+[data-reveal-media] {
+  overflow: hidden;
+}
+[data-reveal-media] img,
+[data-reveal-media] canvas,
+[data-reveal-media] .media-fill {
+  will-change: transform;
+}
+
+/* Parallax containers clip their oversized inner media */
+[data-parallax] {
+  overflow: hidden;
+}
+
+/* ---------- Links & buttons ---------- */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.link-underline:hover::after {
+  transform-origin: left;
+  animation: underline-swipe 0.6s var(--ease-out-expo);
+}
+@keyframes underline-swipe {
+  0% { transform: scaleX(1); transform-origin: right; }
+  50% { transform: scaleX(0); transform-origin: right; }
+  50.01% { transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}
+
+.link-accent {
+  color: var(--c-accent);
+  transition: color 0.3s ease;
+}
+.link-accent:hover {
+  color: var(--c-accent-hover);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

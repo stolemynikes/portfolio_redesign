@@ -1,0 +1,50 @@
+/* ============================================
+   Design tokens — photo-derived palette
+   bg #F8F1E7 · ink #282320 · wijnrood #A83848
+   ============================================ */
+:root {
+  /* Color */
+  --c-bg: #f8f1e7;
+  --c-ink: #282320;
+  --c-accent: #a83848;
+  --c-accent-hover: #7a2735;
+  --c-muted: #8a8178;
+  --c-line: rgba(40, 35, 32, 0.14);
+
+  /* Type — display: Cabinet Grotesk, body: General Sans */
+  --font-display: 'Cabinet Grotesk', 'Arial Narrow', sans-serif;
+  --font-body: 'General Sans', 'Helvetica Neue', sans-serif;
+
+  /* Type scale (fluid) */
+  --fs-display: clamp(3.4rem, 11.5vw, 11rem);      /* hero headline */
+  --fs-h1: clamp(2.4rem, 6vw, 5.2rem);             /* section statements */
+  --fs-h2: clamp(1.8rem, 3.8vw, 3.2rem);           /* section headings */
+  --fs-h3: clamp(1.15rem, 1.8vw, 1.5rem);          /* project titles */
+  --fs-body: clamp(1rem, 1.15vw, 1.125rem);
+  --fs-label: 0.75rem;                              /* uppercase labels */
+
+  --lh-display: 0.92;
+  --lh-heading: 1.05;
+  --lh-body: 1.6;
+
+  --ls-label: 0.14em;
+
+  /* Spacing scale */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6rem;
+  --sp-section: clamp(7rem, 14vw, 12.5rem); /* 112–200px between sections */
+
+  /* Layout */
+  --sidebar-w: 240px;
+  --grid-gap: clamp(1rem, 2vw, 2rem);
+  --content-pad: clamp(1.25rem, 4vw, 4rem);
+  --max-w: 1680px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-reveal: 1s;
+}
