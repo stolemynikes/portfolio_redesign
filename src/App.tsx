@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import FloatingContact from './components/FloatingContact';
 import RippleGrid from './components/RippleGrid';
+import CustomCursor from './components/CustomCursor';
 import Styleguide from './components/Styleguide';
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
         <Footer />
       </main>
       <FloatingContact />
+      <CustomCursor />
     </div>
   );
 }

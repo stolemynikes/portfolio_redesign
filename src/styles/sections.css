@@ -117,7 +117,7 @@
 }
 .about-heading {
   grid-column: 3 / 11;
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-4);
 }
 .about-body {
   grid-column: 3 / 8;
@@ -137,7 +137,7 @@
 
 /* ---------- Projects ---------- */
 .projects > .label {
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-4);
 }
 
 .projects-grid {
@@ -151,7 +151,7 @@
   max-width: 82%;
 }
 .project:nth-child(3n) {
-  margin-top: var(--sp-6);
+  margin-top: var(--sp-4);
 }
 
 .project-link {
@@ -453,7 +453,7 @@
 }
 
 .footer-bottom {
-  margin-top: var(--sp-6);
+  margin-top: var(--sp-5);
   padding-top: var(--sp-3);
   border-top: 1px solid var(--c-line);
   display: flex;

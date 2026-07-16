@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 // backend needed — it emails the submission to you). Until it's replaced,
 // the form gracefully falls back to opening the visitor's mail client.
 const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
-const CONTACT_EMAIL = 'contact@pepijnscheer.nl';
+const CONTACT_EMAIL = 'pepijn.scheer@icloud.com';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 interface Errors {
