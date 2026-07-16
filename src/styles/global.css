@@ -153,6 +153,7 @@ section {
   line-height: var(--lh-display);
   text-transform: uppercase;
   letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 .heading-1 {
@@ -162,6 +163,7 @@ section {
   line-height: var(--lh-heading);
   text-transform: uppercase;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .heading-2 {
@@ -170,6 +172,12 @@ section {
   font-size: var(--fs-h2);
   line-height: var(--lh-heading);
   text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* Avoid single-word orphan lines in running text */
+p {
+  text-wrap: pretty;
 }
 
 /* ---------- Reveal primitives (GSAP hooks) ---------- */

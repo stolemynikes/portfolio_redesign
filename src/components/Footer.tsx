@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 
-// Web3Forms: paste your free access key from https://web3forms.com (no
-// backend needed — it emails the submission to you). Until it's replaced,
-// the form gracefully falls back to opening the visitor's mail client.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+// FormSubmit (formsubmit.co): posts the submission to their API, which
+// emails it to CONTACT_EMAIL — no backend, no signup. The very first
+// submission triggers a one-time activation email to that address;
+// after confirming, messages arrive silently.
 const CONTACT_EMAIL = 'pepijn.scheer@icloud.com';
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 interface Errors {
@@ -60,23 +61,18 @@ export default function Footer() {
       return;
     }
 
-    // No key configured yet → open the visitor's mail client instead
-    if (WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-      mailtoFallback();
-      return;
-    }
-
     setStatus('sending');
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           name: values.naam,
           email: values.email,
           message: values.bericht,
-          subject: `Bericht via portfolio — ${values.naam}`,
+          _subject: `Bericht via portfolio — ${values.naam}`,
+          _template: 'table',
+          _captcha: 'false',
         }),
       });
       if (!res.ok) throw new Error('bad status');

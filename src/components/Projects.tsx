@@ -1,9 +1,11 @@
+import { useState } from 'react';
+
 interface Project {
   title: string;
   year: string;
   description: string;
   stack: string[];
-  cover: 'abstract' | 'mockup';
+  variant: 'abstract' | 'mockup';
   image?: string;
 }
 
@@ -14,7 +16,7 @@ const PROJECTS: Project[] = [
     description:
       'Platform rond Europese regelgeving en compliance — inhoud vertrouwelijk.',
     stack: ['React', 'TypeScript', 'Node', 'GraphQL'],
-    cover: 'abstract',
+    variant: 'abstract',
   },
   {
     title: 'BCMS',
@@ -22,7 +24,7 @@ const PROJECTS: Project[] = [
     description:
       'Configureerbaar content management systeem voor meerdere organisaties.',
     stack: ['React', 'TypeScript', 'Node'],
-    cover: 'mockup',
+    variant: 'mockup',
   },
   {
     title: 'Card Grading App',
@@ -30,65 +32,83 @@ const PROJECTS: Project[] = [
     description:
       'Begeleide opnameflow voor het beoordelen van verzamelkaarten, met automatisch rapport.',
     stack: ['React', 'TypeScript'],
-    cover: 'mockup',
+    variant: 'mockup',
   },
 ];
 
-/** Abstract typographic cover in the site palette (for confidential work). */
-function AbstractCover({ title }: { title: string }) {
-  return (
-    <div className="project-cover project-cover-abstract media-fill" aria-hidden="true">
-      <span className="project-cover-type">{title}</span>
-      <span className="project-cover-type project-cover-type-ghost">{title}</span>
-    </div>
-  );
-}
-
-/** Browser-mockup cover; shows a quiet placeholder until screenshots land. */
-function MockupCover({ title, image }: { title: string; image?: string }) {
-  return (
-    <div className="project-cover project-cover-mockup media-fill" aria-hidden="true">
-      <div className="mockup-chrome">
-        <span /><span /><span />
-      </div>
-      <div className="mockup-viewport">
-        {image ? (
-          <img src={image} alt="" loading="lazy" />
-        ) : (
-          <span className="mockup-placeholder label">{title} — screenshot volgt</span>
-        )}
-      </div>
-    </div>
-  );
-}
-
+/**
+ * Hover-expand project shelf (Skiper35-style): panels share a row, the
+ * active one springs open while siblings compress. Hover expands on
+ * desktop; tap/click and keyboard focus drive it elsewhere.
+ */
 export default function Projects() {
+  const [active, setActive] = useState(0);
+
   return (
     <section id="projecten" className="projects">
       <p className="label" data-reveal="fade">
         Projecten
       </p>
 
-      <div className="projects-grid">
-        {PROJECTS.map((p) => (
-          <article className="project" key={p.title}>
-            <a href="#contact" className="project-link" aria-label={`${p.title} — vraag meer informatie`}>
-              <div className="project-media" data-reveal-media>
-                {p.cover === 'abstract' ? (
-                  <AbstractCover title={p.title} />
+      <div className="shelf" data-reveal="fade">
+        {PROJECTS.map((p, i) => {
+          const isActive = i === active;
+          return (
+            <article
+              key={p.title}
+              className={`shelf-item shelf-variant-${p.variant} ${isActive ? 'is-active' : ''}`}
+              onMouseEnter={() => setActive(i)}
+            >
+              <button
+                type="button"
+                className="shelf-hit"
+                onClick={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                aria-expanded={isActive}
+                aria-label={`${p.title}, ${p.year}`}
+              >
+                {/* Collapsed state: vertical spine label */}
+                <span className="shelf-spine label" aria-hidden="true">
+                  {p.title} — {p.year}
+                </span>
+
+                {/* Cover art */}
+                {p.variant === 'abstract' ? (
+                  <span className="shelf-cover shelf-cover-abstract" aria-hidden="true">
+                    <span className="shelf-ghost">{p.title}</span>
+                  </span>
                 ) : (
-                  <MockupCover title={p.title} image={p.image} />
+                  <span className="shelf-cover shelf-cover-mockup" aria-hidden="true">
+                    <span className="shelf-mockup">
+                      <span className="shelf-mockup-chrome">
+                        <i />
+                        <i />
+                        <i />
+                      </span>
+                      <span className="shelf-mockup-viewport">
+                        {p.image ? (
+                          <img src={p.image} alt="" loading="lazy" />
+                        ) : (
+                          <span className="label">screenshot volgt</span>
+                        )}
+                      </span>
+                    </span>
+                  </span>
                 )}
-              </div>
-              <div className="project-meta">
-                <h3 className="project-title">{p.title}</h3>
-                <span className="label">{p.year}</span>
-              </div>
-              <p className="project-description">{p.description}</p>
-              <p className="label project-stack">{p.stack.join(' · ')}</p>
-            </a>
-          </article>
-        ))}
+
+                {/* Expanded meta */}
+                <span className="shelf-meta">
+                  <span className="shelf-meta-row">
+                    <span className="shelf-title">{p.title}</span>
+                    <span className="label shelf-year">{p.year}</span>
+                  </span>
+                  <span className="shelf-description">{p.description}</span>
+                  <span className="label shelf-stack">{p.stack.join(' · ')}</span>
+                </span>
+              </button>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

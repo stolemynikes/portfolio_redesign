@@ -90,6 +90,7 @@
   color: var(--c-ink);
   line-height: 1.9;
   max-width: 34ch;
+  text-wrap: balance;
 }
 
 .hero-media {
@@ -140,83 +141,87 @@
   margin-bottom: var(--sp-4);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-6) var(--sp-5);
-}
-/* Editorial rhythm: first tile spans wider, offset alternates */
-.project:nth-child(3n + 1) {
-  grid-column: 1 / -1;
-  max-width: 82%;
-}
-.project:nth-child(3n) {
-  margin-top: var(--sp-4);
+/* Hover-expand shelf (Skiper35-style) */
+.shelf {
+  display: flex;
+  gap: clamp(0.6rem, 1vw, 1rem);
+  height: clamp(420px, 62vh, 580px);
 }
 
-.project-link {
-  display: block;
-}
-
-.project-media {
-  aspect-ratio: 4 / 3;
+.shelf-item {
+  position: relative;
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
-  margin-bottom: var(--sp-2);
+  /* gentle spring: slight overshoot on expansion */
+  transition: flex 0.85s cubic-bezier(0.3, 1.25, 0.45, 1);
+}
+.shelf-item.is-active {
+  flex: 3.4;
 }
 
-.project-cover {
+.shelf-hit {
+  display: block;
   width: 100%;
   height: 100%;
-  transition: transform 1s var(--ease-out-expo);
-}
-.project-link:hover .project-cover {
-  transform: scale(1.05);
-}
-
-/* Abstract typographic cover (confidential projects) */
-.project-cover-abstract {
-  background: var(--c-ink);
+  text-align: left;
   position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.project-cover-type {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  text-transform: uppercase;
-  color: var(--c-bg);
-  white-space: nowrap;
-  padding-left: 8%;
-  letter-spacing: -0.01em;
-}
-.project-cover-type-ghost {
-  position: absolute;
-  left: 30%;
-  bottom: -0.25em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--c-accent);
-  opacity: 0.85;
 }
 
-/* Browser mockup cover — warm gradient wash so the glass frame frosts
-   over something with depth rather than a flat fill */
-.project-cover-mockup {
-  background:
-    radial-gradient(120% 120% at 20% 0%, #f3e9db 0%, transparent 60%),
-    linear-gradient(135deg, #efe6d8 0%, #e6d6c4 55%, #d9c3ad 100%);
-  padding: clamp(1.5rem, 3.5vw, 3rem);
+/* Covers */
+.shelf-cover {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.mockup-chrome {
+.shelf-cover-abstract {
+  background: var(--c-ink);
+}
+.shelf-ghost {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-accent);
+  opacity: 0.55;
+  transform: rotate(-90deg);
+  transition: transform 0.85s cubic-bezier(0.3, 1.25, 0.45, 1), opacity 0.5s ease;
+}
+.shelf-item.is-active .shelf-ghost {
+  transform: rotate(0deg);
+  opacity: 0.85;
+}
+.shelf-cover-mockup {
+  background:
+    radial-gradient(120% 120% at 20% 0%, #f3e9db 0%, transparent 60%),
+    linear-gradient(135deg, #efe6d8 0%, #e6d6c4 55%, #d9c3ad 100%);
+}
+.shelf-item:nth-child(3) .shelf-cover-mockup {
+  background:
+    radial-gradient(120% 120% at 80% 0%, #f3e9db 0%, transparent 60%),
+    linear-gradient(215deg, #ecdfc9 0%, #dfc9ab 55%, #cbab86 100%);
+}
+
+/* Glass browser mockup inside expanded panel */
+.shelf-mockup {
+  display: flex;
+  flex-direction: column;
+  width: min(72%, 560px);
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  transition: opacity 0.5s ease 0.18s, transform 0.7s cubic-bezier(0.3, 1.25, 0.45, 1) 0.18s;
+}
+.shelf-item.is-active .shelf-mockup {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.shelf-mockup-chrome {
   display: flex;
   gap: 6px;
-  width: 100%;
-  max-width: 620px;
   padding: 11px 13px;
   border-radius: 12px 12px 0 0;
   background: rgba(40, 35, 32, 0.28);
@@ -225,22 +230,20 @@
   border: 1px solid rgba(248, 241, 231, 0.4);
   border-bottom: none;
 }
-.mockup-chrome span {
+.shelf-mockup-chrome i {
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--c-bg);
   opacity: 0.7;
 }
-.mockup-viewport {
-  width: 100%;
-  max-width: 620px;
+.shelf-mockup-viewport {
   aspect-ratio: 16 / 10;
-  border-radius: 0 0 12px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 0 0 12px 12px;
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
@@ -248,40 +251,76 @@
   border-top: none;
   box-shadow: var(--glass-shadow);
 }
-.mockup-viewport img {
+.shelf-mockup-viewport img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.mockup-placeholder {
-  opacity: 0.7;
+
+/* Collapsed spine label */
+.shelf-spine {
+  position: absolute;
+  z-index: 2; /* above the cover art */
+  left: 50%;
+  bottom: 1.4rem;
+  transform: translateX(-50%);
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  white-space: nowrap;
+  color: var(--c-ink);
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+.shelf-variant-abstract .shelf-spine {
+  color: var(--c-bg);
+}
+.shelf-item.is-active .shelf-spine {
+  opacity: 0;
 }
 
-.project-meta {
+/* Expanded meta block */
+.shelf-meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: clamp(1rem, 2vw, 1.8rem);
+  background: linear-gradient(to top, rgba(40, 35, 32, 0.55), transparent);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease 0.22s, transform 0.6s cubic-bezier(0.3, 1.25, 0.45, 1) 0.22s;
+  pointer-events: none;
+}
+.shelf-item.is-active .shelf-meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+.shelf-meta-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--sp-2);
 }
-.project-title {
+.shelf-title {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-h3);
   text-transform: uppercase;
-  position: relative;
-  transition: transform 0.6s var(--ease-out-expo);
+  color: var(--c-bg);
 }
-.project-link:hover .project-title {
-  transform: translateX(0.5rem);
-  color: var(--c-accent);
+.shelf-year {
+  color: rgba(248, 241, 231, 0.75);
 }
-.project-description {
-  margin-top: var(--sp-1);
-  max-width: 46ch;
-  color: var(--c-ink);
+.shelf-description {
+  display: block;
+  max-width: 52ch;
+  color: rgba(248, 241, 231, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
-.project-stack {
-  margin-top: var(--sp-1);
+.shelf-stack {
+  color: rgba(248, 241, 231, 0.7);
 }
 
 /* ---------- Floating glass contact pill ---------- */
@@ -337,7 +376,7 @@
 }
 .contact-heading {
   margin-top: var(--sp-1);
-  max-width: 10ch;
+  max-width: 14ch;
 }
 .contact-sub {
   max-width: 42ch;
@@ -525,15 +564,33 @@
     max-width: 420px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-5);
+  /* Shelf becomes a vertical stack; active panel grows in height */
+  .shelf {
+    flex-direction: column;
+    height: auto;
   }
-  .project:nth-child(3n + 1) {
-    max-width: 100%;
+  .shelf-item {
+    flex: none;
+    height: 76px;
+    transition: height 0.7s cubic-bezier(0.3, 1.25, 0.45, 1);
   }
-  .project:nth-child(3n) {
-    margin-top: 0;
+  .shelf-item.is-active {
+    flex: none;
+    height: min(64vh, 460px);
+  }
+  .shelf-spine {
+    left: 1.2rem;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    writing-mode: horizontal-tb;
+    rotate: none;
+  }
+  .shelf-ghost {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+  }
+  .shelf-mockup {
+    width: min(86%, 560px);
   }
 
   .contact-intro,
