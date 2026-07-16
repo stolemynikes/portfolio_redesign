@@ -291,20 +291,6 @@
   margin-top: var(--sp-1);
 }
 
-/* ---------- Statements ---------- */
-.statements {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-5);
-}
-.statement:nth-child(2) {
-  margin-left: 12%;
-}
-.statement:nth-child(3) {
-  margin-left: 24%;
-  color: var(--c-accent);
-}
-
 /* ---------- Footer ---------- */
 .footer {
   padding-block: var(--sp-section) var(--sp-4);

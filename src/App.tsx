@@ -4,7 +4,6 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
-import Statements from './components/Statements';
 import Footer from './components/Footer';
 import Styleguide from './components/Styleguide';
 
@@ -33,7 +32,6 @@ export default function App() {
       <main className="content">
         <Hero />
         <About />
-        <Statements />
         <Projects />
         <Footer />
       </main>
