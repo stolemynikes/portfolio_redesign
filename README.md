@@ -30,7 +30,6 @@ npm run preview   # serveer de build lokaal
 | GitHub-URL | `src/components/Hero.tsx`, `src/components/Footer.tsx` |
 | E-mailadres | `src/components/Footer.tsx` |
 | BCMS / Card Grading screenshots | `image`-prop in `src/components/Projects.tsx` |
-| Werkervaring-details (periodes, omschrijvingen) | `src/components/Experience.tsx` — check tegen CV |
 
 ## Deploy — Cloudflare Pages
 

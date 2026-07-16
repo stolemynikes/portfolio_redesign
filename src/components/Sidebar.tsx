@@ -1,8 +1,6 @@
 const NAV = [
   { href: '#over-mij', label: 'Over mij' },
   { href: '#projecten', label: 'Projecten' },
-  { href: '#ervaring', label: 'Ervaring' },
-  { href: '#vaardigheden', label: 'Vaardigheden' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -25,7 +23,7 @@ export default function Sidebar() {
         <p className="label">Nederland</p>
         <p className="label sidebar-available">
           <span className="sidebar-dot" aria-hidden="true" />
-          Beschikbaar voor duaal (HBO-ICT)
+          Fullstack developer
         </p>
       </div>
     </aside>

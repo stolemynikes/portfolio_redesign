@@ -40,7 +40,7 @@ export default function Hero() {
         <p className="hero-intro label">
           Gedreven fullstack developer — ik leer door te maken.
           <br />
-          Op zoek naar een duale HBO-ICT werkplek.
+          React · TypeScript · Node
         </p>
 
         <div className="hero-links">

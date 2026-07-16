@@ -36,7 +36,7 @@ Goal: personal portfolio for Pepijn — fullstack developer. Editorial layout in
 - **Language: Nederlands.** All copy in Dutch, tone matching the CV's "Over mij" (gedreven, praktisch, leert door te maken). Strictly professional — no hobby content.
 - **Audience:** duale HBO-ICT werkplekken / werkgevers (CITA). CV-download link en GitHub-link zichtbaar in de hero of nav.
 - **Hero:** groot uppercase display ("FULLSTACK DEVELOPER") + portretfoto asymmetrisch geplaatst (Marcel-stijl banner). Portretfoto wordt aangeleverd — placeholder tot die tijd.
-- **Secties:** Hero → Over mij (korte intro uit CV) → Projecten → Werkervaring/stages (compact, FBI Design + Studio Online uitgelicht) → Vaardigheden → Contact/footer-statement.
+- **Secties:** Hero → Over mij (korte intro uit CV) → Statements → Projecten → Contact/footer-statement. *(Update 2026-07-16: Werkervaring en Vaardigheden verwijderd; alle duaal/HBO-ICT-vermeldingen uit de copy gehaald.)*
 - **Projecten (uit CV):**
   - EUStatement (React, TS, Node, GraphQL) — inhoud vertrouwelijk → gebruik een abstracte branded cover-tile, géén UI-screenshots. Copy: één regel over regelgeving/compliance + stack.
   - BCMS — configureerbaar CMS, multi-organisatie. UI-screenshots in browser-mockup kunnen hier wel.

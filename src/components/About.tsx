@@ -21,9 +21,8 @@ export default function About() {
           <p>
             Ik werk het meest met React, TypeScript en Node, en voel me thuis
             in projecten waar zowel techniek als gebruikerservaring ertoe
-            doen. Op dit moment zoek ik een duale werkplek voor mijn HBO-ICT
-            opleiding (CITA), waar ik naast mijn studie kan meedraaien in een
-            serieus ontwikkelteam.
+            doen — van datamodel en API tot de laatste pixel van de
+            interface.
           </p>
         </div>
 

@@ -5,8 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Statements from './components/Statements';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
 import Footer from './components/Footer';
 import Styleguide from './components/Styleguide';
 
@@ -35,10 +33,8 @@ export default function App() {
       <main className="content">
         <Hero />
         <About />
-        <Projects />
         <Statements />
-        <Experience />
-        <Skills />
+        <Projects />
         <Footer />
       </main>
     </div>
