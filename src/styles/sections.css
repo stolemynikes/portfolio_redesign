@@ -219,9 +219,12 @@
   opacity: 0.85;
 }
 
-/* Browser mockup cover */
+/* Browser mockup cover — warm gradient wash so the glass frame frosts
+   over something with depth rather than a flat fill */
 .project-cover-mockup {
-  background: #efe6d8;
+  background:
+    radial-gradient(120% 120% at 20% 0%, #f3e9db 0%, transparent 60%),
+    linear-gradient(135deg, #efe6d8 0%, #e6d6c4 55%, #d9c3ad 100%);
   padding: clamp(1.5rem, 3.5vw, 3rem);
   display: flex;
   flex-direction: column;
@@ -233,27 +236,36 @@
   gap: 6px;
   width: 100%;
   max-width: 620px;
-  background: var(--c-ink);
-  padding: 10px 12px;
-  border-radius: 8px 8px 0 0;
+  padding: 11px 13px;
+  border-radius: 12px 12px 0 0;
+  background: rgba(40, 35, 32, 0.28);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid rgba(248, 241, 231, 0.4);
+  border-bottom: none;
 }
 .mockup-chrome span {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--c-bg);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .mockup-viewport {
   width: 100%;
   max-width: 620px;
   aspect-ratio: 16 / 10;
-  background: var(--c-bg);
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 12px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  box-shadow: var(--glass-shadow);
 }
 .mockup-viewport img {
   width: 100%;
@@ -289,6 +301,35 @@
 }
 .project-stack {
   margin-top: var(--sp-1);
+}
+
+/* ---------- Floating glass contact pill ---------- */
+.floating-contact {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--c-ink);
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+.floating-contact:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(40, 35, 32, 0.2);
+}
+.floating-contact-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
 /* ---------- Footer ---------- */
@@ -337,9 +378,11 @@
     gap: var(--sp-3);
     padding: var(--sp-2) var(--content-pad);
     border-right: none;
-    border-bottom: 1px solid var(--c-line);
-    background: color-mix(in srgb, var(--c-bg) 88%, transparent);
-    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+    box-shadow: var(--glass-shadow);
   }
   .sidebar-nav {
     flex-direction: row;

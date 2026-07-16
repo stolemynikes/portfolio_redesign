@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
 import Styleguide from './components/Styleguide';
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Projects />
         <Footer />
       </main>
+      <FloatingContact />
     </div>
   );
 }

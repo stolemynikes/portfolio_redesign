@@ -176,6 +176,29 @@ section {
   color: var(--c-accent-hover);
 }
 
+/* ---------- Glassmorphism utility ---------- */
+/* Only meaningful over imagery/scrolling content — the backdrop-filter
+   needs something behind it to frost. Warm tint keeps it on-palette. */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  box-shadow: var(--glass-shadow);
+  /* subtle top highlight for a real-glass edge */
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0) 45%
+  );
+}
+/* Graceful fallback where backdrop-filter is unsupported */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass {
+    background: rgba(248, 241, 231, 0.92);
+  }
+}
+
 /* Focus visibility */
 :focus-visible {
   outline: 2px solid var(--c-accent);

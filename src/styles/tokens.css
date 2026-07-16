@@ -47,4 +47,10 @@
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-reveal: 1s;
+
+  /* Glassmorphism — warm-tinted frosted glass, keyed to the palette */
+  --glass-bg: rgba(248, 241, 231, 0.55);
+  --glass-border: rgba(248, 241, 231, 0.65);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px rgba(40, 35, 32, 0.14);
 }
