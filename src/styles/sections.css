@@ -391,8 +391,4 @@
     margin-top: 0;
   }
 
-  .statement:nth-child(2),
-  .statement:nth-child(3) {
-    margin-left: 0;
-  }
 }
