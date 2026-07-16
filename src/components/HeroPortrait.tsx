@@ -73,6 +73,10 @@ export default function HeroPortrait({ src, alt }: Props) {
       setFallback(true);
       return;
     }
+    // Pass the photo's stored sRGB bytes straight through, with no color
+    // conversion on either sample or output — so the WebGL portrait matches
+    // a plain <img> exactly instead of rendering darker.
+    renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
@@ -89,7 +93,7 @@ export default function HeroPortrait({ src, alt }: Props) {
     new THREE.TextureLoader().load(
       src,
       (tex) => {
-        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.colorSpace = THREE.LinearSRGBColorSpace; // no sRGB→linear decode on sample
         uniforms.uTexture.value = tex;
         uniforms.uImageAspect.value = tex.image.width / tex.image.height;
       },

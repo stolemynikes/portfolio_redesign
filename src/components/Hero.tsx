@@ -18,8 +18,8 @@ export default function Hero() {
     tl.set(root, { autoAlpha: 1 })
       .from(inners, { yPercent: 110, duration: 1.1, stagger: 0.1 })
       .from(
-        root.querySelectorAll('.hero-intro, .hero-links'),
-        { autoAlpha: 0, y: 24, duration: 0.9, stagger: 0.12 },
+        root.querySelector('.hero-intro'),
+        { autoAlpha: 0, y: 24, duration: 0.9 },
         '-=0.7'
       )
       .from(
@@ -42,20 +42,6 @@ export default function Hero() {
           <br />
           React · TypeScript · Node
         </p>
-
-        <div className="hero-links">
-          <a href="/cv-pepijn-scheer.pdf" className="link-underline" download>
-            Download CV
-          </a>
-          <a
-            href="https://github.com/pepijnscheer"
-            className="link-underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </div>
 
         <div className="hero-media" data-parallax="8">
           <Suspense

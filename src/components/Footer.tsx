@@ -102,9 +102,6 @@ export default function Footer() {
             Een project, een vraag of gewoon even sparren? Laat een bericht
             achter — ik reageer meestal binnen een dag.
           </p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="link-underline contact-direct">
-            {CONTACT_EMAIL}
-          </a>
         </div>
 
         {status === 'success' ? (

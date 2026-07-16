@@ -21,10 +21,6 @@ export default function Sidebar() {
 
       <div className="sidebar-meta">
         <p className="label">Nederland</p>
-        <p className="label sidebar-available">
-          <span className="sidebar-dot" aria-hidden="true" />
-          Fullstack developer
-        </p>
       </div>
     </aside>
   );
