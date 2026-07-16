@@ -21,11 +21,11 @@
   position: absolute;
   inset: -40%;
   background:
-    radial-gradient(38% 44% at 28% 30%, rgba(168, 56, 72, 0.09), transparent 70%),
-    radial-gradient(46% 50% at 78% 68%, rgba(230, 180, 120, 0.12), transparent 72%),
-    radial-gradient(40% 42% at 60% 12%, rgba(122, 39, 53, 0.06), transparent 70%);
-  filter: blur(30px);
-  animation: backdrop-drift 34s ease-in-out infinite alternate;
+    radial-gradient(38% 44% at 28% 30%, rgba(168, 56, 72, 0.22), transparent 68%),
+    radial-gradient(46% 50% at 78% 68%, rgba(232, 168, 96, 0.28), transparent 70%),
+    radial-gradient(42% 44% at 60% 10%, rgba(122, 39, 53, 0.16), transparent 68%);
+  filter: blur(40px);
+  animation: backdrop-drift 22s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -36,21 +36,21 @@
   position: absolute;
   inset: -50%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.045;
+  opacity: 0.07;
   mix-blend-mode: multiply;
-  animation: backdrop-grain 6s steps(6) infinite;
+  animation: backdrop-grain 5s steps(6) infinite;
   will-change: transform;
 }
 
 @keyframes backdrop-drift {
   0% {
-    transform: translate3d(-3%, -2%, 0) scale(1.05) rotate(0deg);
+    transform: translate3d(-8%, -6%, 0) scale(1.05) rotate(0deg);
   }
   50% {
-    transform: translate3d(2%, 3%, 0) scale(1.12) rotate(4deg);
+    transform: translate3d(7%, 8%, 0) scale(1.18) rotate(8deg);
   }
   100% {
-    transform: translate3d(4%, -1%, 0) scale(1.06) rotate(-3deg);
+    transform: translate3d(10%, -4%, 0) scale(1.08) rotate(-6deg);
   }
 }
 
