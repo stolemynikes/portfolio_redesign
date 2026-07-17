@@ -390,7 +390,8 @@ body.menu-open .floating-contact {
 }
 /* When WebGL liquid glass is active it renders fill, blur and shadow
    itself — strip the CSS material so they don't stack */
-.floating-contact.liquid-active {
+.floating-contact.liquid-active,
+.floating-contact.liquid-active:hover {
   background: transparent;
   border-color: transparent;
   backdrop-filter: none;

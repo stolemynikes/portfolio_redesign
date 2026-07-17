@@ -11,6 +11,7 @@ import { gsap, prefersReducedMotion } from '../lib/motion';
 export default function FloatingContact() {
   const ref = useRef<HTMLAnchorElement>(null);
   const [hidden, setHidden] = useState(false);
+  const [liquid, setLiquid] = useState(false);
 
   // Upgrade the pill to WebGL liquid glass (refraction/chromatic
   // aberration à la Apple). Runs after mount; on any failure the CSS
@@ -36,7 +37,9 @@ export default function FloatingContact() {
           instance.destroy();
           return;
         }
-        el.classList.add('liquid-active');
+        // Declarative: a re-render must not wipe the class (it did, which
+        // made the pill flip between CSS and WebGL glass on scroll)
+        setLiquid(true);
       } catch {
         /* keep CSS glass fallback */
       }
@@ -71,7 +74,7 @@ export default function FloatingContact() {
   return (
     <a
       href="#contact"
-      className={`floating-contact glass ${hidden ? 'is-hidden' : ''}`}
+      className={`floating-contact glass ${liquid ? 'liquid-active' : ''} ${hidden ? 'is-hidden' : ''}`}
       ref={ref}
       tabIndex={hidden ? -1 : undefined}
       aria-hidden={hidden}
