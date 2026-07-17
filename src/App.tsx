@@ -41,7 +41,10 @@ export default function App() {
             preserveAspectRatio="none"
             result="map"
           />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale="72" xChannelSelector="R" yChannelSelector="G" />
+          <feDisplacementMap in="SourceGraphic" in2="map" scale="72" xChannelSelector="R" yChannelSelector="G">
+            {/* breathing lens: warp strength oscillates so it reads as liquid */}
+            <animate attributeName="scale" values="48;88;48" dur="5s" repeatCount="indefinite" />
+          </feDisplacementMap>
         </filter>
       </svg>
       <div className="backdrop" aria-hidden="true" />
