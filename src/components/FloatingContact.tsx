@@ -8,22 +8,9 @@ import { gsap, prefersReducedMotion } from '../lib/motion';
  * contact section is on screen (redundant there, and it would collide
  * with the footer links).
  */
-// SVG displacement inside backdrop-filter only renders in Chromium;
-// Safari would drop the whole filter chain, losing even the frost.
-const supportsLensWarp = () =>
-  Array.isArray((navigator as { userAgentData?: { brands?: { brand: string }[] } }).userAgentData?.brands) &&
-  (navigator as unknown as { userAgentData: { brands: { brand: string }[] } }).userAgentData.brands.some(
-    (b) => /Chromium/i.test(b.brand)
-  );
-
 export default function FloatingContact() {
   const ref = useRef<HTMLAnchorElement>(null);
   const [hidden, setHidden] = useState(false);
-  const [lens, setLens] = useState(false);
-
-  useEffect(() => {
-    setLens(supportsLensWarp());
-  }, []);
 
   useEffect(() => {
     if (!prefersReducedMotion()) {
@@ -49,7 +36,7 @@ export default function FloatingContact() {
   return (
     <a
       href="#contact"
-      className={`floating-contact glass ${lens ? 'lens' : ''} ${hidden ? 'is-hidden' : ''}`}
+      className={`floating-contact glass ${hidden ? 'is-hidden' : ''}`}
       ref={ref}
       tabIndex={hidden ? -1 : undefined}
       aria-hidden={hidden}

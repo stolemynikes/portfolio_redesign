@@ -31,22 +31,6 @@ export default function App() {
 
   return (
     <div className="shell">
-      {/* Lens displacement filter for backdrop-filter (Chromium only).
-          The 2x2 ramp image bilinearly encodes X/Y offsets that magnify
-          the backdrop like glass. */}
-      <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
-        <filter id="glass-lens" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
-          <feImage
-            href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAE0lEQVR4nGNgYGD4zwAm/v9nAAAT+gP9tHo/OwAAAABJRU5ErkJggg=="
-            preserveAspectRatio="none"
-            result="map"
-          />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale="72" xChannelSelector="R" yChannelSelector="G">
-            {/* breathing lens: warp strength oscillates so it reads as liquid */}
-            <animate attributeName="scale" values="48;88;48" dur="5s" repeatCount="indefinite" />
-          </feDisplacementMap>
-        </filter>
-      </svg>
       <div className="backdrop" aria-hidden="true" />
       <RippleGrid />
       <Sidebar />

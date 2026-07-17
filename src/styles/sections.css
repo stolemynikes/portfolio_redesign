@@ -388,18 +388,6 @@ body.menu-open .floating-contact {
   pointer-events: none;
   transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
 }
-/* Chromium: true lens refraction — displacement map warps the live
-   backdrop, then a touch of blur + the saturation boost. Clearer fill
-   so the warp reads through the center, plus a curved-glass specular
-   sweep so the lens is visible even over flat background. */
-.floating-contact.lens {
-  background:
-    radial-gradient(120% 160% at 25% 0%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05) 45%, transparent 60%),
-    radial-gradient(140% 200% at 80% 120%, rgba(255, 255, 255, 0.28), transparent 55%),
-    rgba(252, 247, 240, 0.25);
-  backdrop-filter: url(#glass-lens) blur(2px) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: url(#glass-lens) blur(2px) saturate(var(--glass-saturate));
-}
 .floating-contact-dot {
   width: 8px;
   height: 8px;
