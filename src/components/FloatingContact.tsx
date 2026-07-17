@@ -12,6 +12,41 @@ export default function FloatingContact() {
   const ref = useRef<HTMLAnchorElement>(null);
   const [hidden, setHidden] = useState(false);
 
+  // Upgrade the pill to WebGL liquid glass (refraction/chromatic
+  // aberration à la Apple). Runs after mount; on any failure the CSS
+  // glass simply stays.
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    let instance: { destroy(): void } | null = null;
+    let cancelled = false;
+    (async () => {
+      try {
+        const { LiquidGlass } = await import('@ybouane/liquidglass');
+        const root = document.querySelector<HTMLElement>('.shell');
+        const el = ref.current;
+        if (!root || !el || cancelled) return;
+        el.dataset.config = JSON.stringify({
+          floating: true,
+          cornerRadius: 28,
+          blurAmount: 0.2,
+          refraction: 0.6,
+        });
+        instance = await LiquidGlass.init({ root, glassElements: [el] });
+        if (cancelled) {
+          instance.destroy();
+          return;
+        }
+        el.classList.add('liquid-active');
+      } catch {
+        /* keep CSS glass fallback */
+      }
+    })();
+    return () => {
+      cancelled = true;
+      instance?.destroy();
+    };
+  }, []);
+
   useEffect(() => {
     if (!prefersReducedMotion()) {
       gsap.from(ref.current!, {

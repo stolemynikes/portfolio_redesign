@@ -388,6 +388,19 @@ body.menu-open .floating-contact {
   pointer-events: none;
   transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
 }
+/* When WebGL liquid glass is active it renders fill, blur and shadow
+   itself — strip the CSS material so they don't stack */
+.floating-contact.liquid-active {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+.floating-contact.liquid-active > * {
+  position: relative;
+  z-index: 1; /* label and dot above the injected canvas */
+}
 .floating-contact-dot {
   width: 8px;
   height: 8px;
