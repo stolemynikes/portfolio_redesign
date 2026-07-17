@@ -68,8 +68,8 @@
 :root[data-theme='dark'] {
   --c-bg: #1c1815;
   --c-ink: #f2ebe1;
-  --c-accent: #d4707f;
-  --c-accent-hover: #e49aa5;
+  --c-accent: #e0555c;
+  --c-accent-hover: #ec8288;
   --c-muted: #a89a8d;
   --c-line: rgba(242, 235, 225, 0.14);
 
