@@ -71,7 +71,7 @@ export default function Footer() {
           email: values.email,
           message: values.bericht,
           _subject: `Bericht via portfolio — ${values.naam}`,
-          _template: 'table',
+          _template: 'box',
           _captcha: 'false',
         }),
       });
