@@ -26,11 +26,11 @@ export default function FloatingContact() {
         const root = document.querySelector<HTMLElement>('.shell');
         const el = ref.current;
         if (!root || !el || cancelled) return;
+        // Library defaults = the demo's "Regular glass" preset (clear
+        // center, refracted edges); only shape/float are ours.
         el.dataset.config = JSON.stringify({
           floating: true,
           cornerRadius: 28,
-          blurAmount: 0.2,
-          refraction: 0.6,
         });
         instance = await LiquidGlass.init({ root, glassElements: [el] });
         if (cancelled) {
