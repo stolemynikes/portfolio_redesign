@@ -53,12 +53,8 @@ export default function CustomCursor() {
       }
       show();
       const interactive = el.closest('a, button, [data-cursor]');
-      gsap.to(ring, {
-        scale: interactive ? 1.7 : 1,
-        borderColor: interactive ? 'rgba(168, 56, 72, 0.6)' : 'rgba(40, 35, 32, 0.35)',
-        duration: 0.35,
-        ease: 'power3.out',
-      });
+      ring.classList.toggle('is-interactive', !!interactive); // color via CSS tokens (theme-aware)
+      gsap.to(ring, { scale: interactive ? 1.7 : 1, duration: 0.35, ease: 'power3.out' });
       gsap.to(dot, { scale: interactive ? 0.5 : 1, duration: 0.35, ease: 'power3.out' });
     };
 

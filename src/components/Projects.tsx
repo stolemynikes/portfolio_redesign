@@ -57,7 +57,10 @@ export default function Projects() {
             <article
               key={p.title}
               className={`shelf-item shelf-variant-${p.variant} ${isActive ? 'is-active' : ''}`}
-              onMouseEnter={() => setActive(i)}
+              // Real mice only: iPads emulate hover on tap and then swallow
+              // the click when the handler mutates layout, so touch relies
+              // purely on the button's onClick.
+              onPointerEnter={(e) => e.pointerType === 'mouse' && setActive(i)}
             >
               <button
                 type="button"

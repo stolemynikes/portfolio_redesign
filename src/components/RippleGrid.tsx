@@ -39,9 +39,20 @@ export default function RippleGrid() {
     let w = 0;
     let h = 0;
 
-    const styles = getComputedStyle(document.documentElement);
-    const ink = (styles.getPropertyValue('--c-ink').trim() || '#282320').slice(0, 7);
-    const accent = (styles.getPropertyValue('--c-accent').trim() || '#a83848').slice(0, 7);
+    let ink = '#282320';
+    let accent = '#a83848';
+    const readColors = () => {
+      const styles = getComputedStyle(document.documentElement);
+      ink = (styles.getPropertyValue('--c-ink').trim() || '#282320').slice(0, 7);
+      accent = (styles.getPropertyValue('--c-accent').trim() || '#a83848').slice(0, 7);
+    };
+    readColors();
+    // Track theme switches so dots stay visible on both backgrounds
+    const themeObserver = new MutationObserver(readColors);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
 
     const pointer = { x: -9999, y: -9999, active: false };
     const ripples: Ripple[] = [];
@@ -150,6 +161,7 @@ export default function RippleGrid() {
 
     return () => {
       cancelAnimationFrame(raf);
+      themeObserver.disconnect();
       window.clearInterval(idle);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerdown', onClick);

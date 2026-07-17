@@ -62,6 +62,22 @@
   gap: var(--sp-1);
 }
 
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: 0 0 0 -10px;
+  border-radius: 50%;
+  color: var(--c-muted);
+  transition: color 0.3s ease, transform 0.5s var(--ease-out-expo);
+}
+.theme-toggle:hover {
+  color: var(--c-accent);
+  transform: rotate(20deg);
+}
+
 /* ---------- Burger (mobile only) ---------- */
 .burger {
   display: none;
@@ -149,7 +165,7 @@ body.menu-open .floating-contact {
   max-height: 72vh;
   width: 100%;
   overflow: hidden;
-  background: #e9ded0;
+  background: var(--c-surface);
 }
 .hero-portrait canvas,
 .hero-portrait img {
@@ -214,8 +230,9 @@ body.menu-open .floating-contact {
   align-items: center;
   justify-content: center;
 }
+/* Covers are constant art — they don't flip with the theme */
 .shelf-cover-abstract {
-  background: var(--c-ink);
+  background: #282320;
 }
 .shelf-ghost {
   font-family: var(--font-display);
@@ -224,7 +241,7 @@ body.menu-open .floating-contact {
   text-transform: uppercase;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 1px var(--c-accent);
+  -webkit-text-stroke: 1px #a83848;
   opacity: 0.55;
   transform: rotate(-90deg);
   transition: transform 0.85s cubic-bezier(0.3, 1.25, 0.45, 1), opacity 0.5s ease;
@@ -272,7 +289,7 @@ body.menu-open .floating-contact {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--c-bg);
+  background: #f8f1e7;
   opacity: 0.7;
 }
 .shelf-mockup-viewport {
@@ -305,12 +322,12 @@ body.menu-open .floating-contact {
   writing-mode: vertical-rl;
   rotate: 180deg;
   white-space: nowrap;
-  color: var(--c-ink);
+  color: #282320; /* constant: sits on the constant light covers */
   opacity: 1;
   transition: opacity 0.35s ease;
 }
 .shelf-variant-abstract .shelf-spine {
-  color: var(--c-bg);
+  color: #f8f1e7;
 }
 .shelf-item.is-active .shelf-spine {
   opacity: 0;
@@ -345,7 +362,7 @@ body.menu-open .floating-contact {
   font-weight: 700;
   font-size: var(--fs-h3);
   text-transform: uppercase;
-  color: var(--c-bg);
+  color: #f8f1e7; /* constant: sits on the constant dark scrim */
 }
 .shelf-year {
   color: rgba(248, 241, 231, 0.75);
@@ -570,8 +587,12 @@ body.menu-open .floating-contact {
   .sidebar-meta {
     display: none;
   }
+  .theme-toggle {
+    margin-left: auto;
+  }
   .burger {
     display: block;
+    margin-left: 0.4rem;
   }
 
   /* Full-screen overlay revealed as a circle growing from the burger */

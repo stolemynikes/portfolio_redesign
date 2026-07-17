@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const NAV = [
   { href: '#over-mij', label: 'Over mij' },
@@ -37,6 +38,8 @@ export default function Sidebar() {
             </a>
           ))}
         </nav>
+
+        <ThemeToggle />
 
         <button
           type="button"

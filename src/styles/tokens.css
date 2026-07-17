@@ -48,15 +48,36 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-reveal: 1s;
 
-  /* Glassmorphism — Apple-style frosted material, warm-keyed.
-     The recipe: heavy blur + strong saturation boost (colors behind
-     pop instead of greying out), light translucent fill, specular
-     1px edge highlight, soft ambient shadow. */
-  --glass-bg: rgba(252, 247, 240, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.55);
-  --glass-blur: 28px;
-  --glass-saturate: 1.8;
-  --glass-shadow: 0 10px 40px rgba(40, 35, 32, 0.16);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 0 24px rgba(255, 255, 255, 0.1);
+  /* Glassmorphism — the original warm frosted glass */
+  --glass-bg: rgba(248, 241, 231, 0.55);
+  --glass-border: rgba(248, 241, 231, 0.65);
+  --glass-blur: 16px;
+  --glass-saturate: 1.3;
+  --glass-shadow: 0 8px 32px rgba(40, 35, 32, 0.14);
+
+  /* Surfaces */
+  --c-surface: #e9ded0;
+
+  color-scheme: light;
+}
+
+/* ============================================
+   Dark theme — warm charcoal, same wine accent
+   family (lightened for contrast on dark)
+   ============================================ */
+:root[data-theme='dark'] {
+  --c-bg: #1c1815;
+  --c-ink: #f2ebe1;
+  --c-accent: #d4707f;
+  --c-accent-hover: #e49aa5;
+  --c-muted: #a89a8d;
+  --c-line: rgba(242, 235, 225, 0.14);
+
+  --glass-bg: rgba(28, 24, 21, 0.55);
+  --glass-border: rgba(242, 235, 225, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  --c-surface: #2a2420;
+
+  color-scheme: dark;
 }
