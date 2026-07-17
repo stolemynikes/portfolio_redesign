@@ -68,13 +68,7 @@ export default function HeroPortrait({ src, alt }: Props) {
 
     let renderer: THREE.WebGLRenderer;
     try {
-      // preserveDrawingBuffer lets the LiquidGlass capturer sample this
-      // canvas via drawImage (otherwise it reads back black)
-      renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        preserveDrawingBuffer: true,
-      });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     } catch {
       setFallback(true);
       return;
