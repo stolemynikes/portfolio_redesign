@@ -48,9 +48,15 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-reveal: 1s;
 
-  /* Glassmorphism — warm-tinted frosted glass, keyed to the palette */
-  --glass-bg: rgba(248, 241, 231, 0.55);
-  --glass-border: rgba(248, 241, 231, 0.65);
-  --glass-blur: 16px;
-  --glass-shadow: 0 8px 32px rgba(40, 35, 32, 0.14);
+  /* Glassmorphism — Apple-style frosted material, warm-keyed.
+     The recipe: heavy blur + strong saturation boost (colors behind
+     pop instead of greying out), light translucent fill, specular
+     1px edge highlight, soft ambient shadow. */
+  --glass-bg: rgba(252, 247, 240, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-blur: 28px;
+  --glass-saturate: 1.8;
+  --glass-shadow: 0 10px 40px rgba(40, 35, 32, 0.16);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 24px rgba(255, 255, 255, 0.1);
 }
