@@ -25,14 +25,6 @@ export default function About() {
             interface.
           </p>
         </div>
-
-        <div className="about-media" data-reveal-media data-parallax="10">
-          <img
-            src="/assets/portret-2.jpg"
-            alt="Portret van Pepijn Scheer"
-            loading="lazy"
-          />
-        </div>
       </div>
     </section>
   );

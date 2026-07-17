@@ -75,12 +75,6 @@ export default function Sidebar() {
             </a>
           ))}
         </div>
-        <p
-          className="label mobile-menu-meta"
-          style={{ transitionDelay: open ? '0.42s' : '0s' }}
-        >
-          Nederland
-        </p>
       </nav>
     </>
   );
