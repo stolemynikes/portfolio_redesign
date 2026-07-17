@@ -41,7 +41,7 @@ export default function App() {
             preserveAspectRatio="none"
             result="map"
           />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale="36" xChannelSelector="R" yChannelSelector="G" />
+          <feDisplacementMap in="SourceGraphic" in2="map" scale="72" xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </svg>
       <div className="backdrop" aria-hidden="true" />
