@@ -71,9 +71,9 @@
   border-radius: 50%;
   color: var(--c-muted);
   transition: color 0.3s ease, transform 0.5s var(--ease-out-expo);
-  /* desktop: top-right corner of the sidebar, on the logo row */
+  /* desktop: top-right of the sidebar, centered on the logo's line */
   position: absolute;
-  top: calc(var(--sp-4) - 8px);
+  top: calc(var(--sp-4) - 1px);
   right: var(--sp-2);
 }
 .theme-toggle:hover {

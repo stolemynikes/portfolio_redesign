@@ -18,12 +18,11 @@
   </head>
   <body>
     <script>
-      // Set theme before first paint to avoid a flash
+      // Set theme before first paint to avoid a flash. Light is the
+      // default; dark only when the visitor chose it earlier.
       try {
-        var t =
-          localStorage.getItem('theme') ||
-          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.dataset.theme = t;
+        document.documentElement.dataset.theme =
+          localStorage.getItem('theme') || 'light';
       } catch (e) {}
     </script>
     <div id="root"></div>
