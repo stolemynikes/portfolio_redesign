@@ -4,25 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pepijn Scheer, Fullstack Developer</title>
-    <meta name="description" content="Portfolio van Pepijn Scheer, fullstack developer. React, TypeScript, Node." />
+    <meta name="description" content="Portfolio van Pepijn Scheer, fullstack developer uit Nederland. Projecten met React, TypeScript en Node." />
+    <meta name="author" content="Pepijn Scheer" />
+    <link rel="canonical" href="https://pepijnscheer.nl/" />
+
     <meta property="og:title" content="Pepijn Scheer, Fullstack Developer" />
     <meta property="og:description" content="Ik bouw digitale producten van idee tot deploy." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pepijnscheer.nl" />
+    <meta property="og:url" content="https://pepijnscheer.nl/" />
+    <meta property="og:site_name" content="Pepijn Scheer" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:image" content="https://pepijnscheer.nl/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pepijn Scheer, fullstack developer" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pepijn Scheer, Fullstack Developer" />
+    <meta name="twitter:description" content="Ik bouw digitale producten van idee tot deploy." />
+    <meta name="twitter:image" content="https://pepijnscheer.nl/og-image.jpg" />
+
+    <meta name="theme-color" content="#1c1815" />
+
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
       href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700&f[]=general-sans@400,500,600&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F8F1E7'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-weight='bold' font-size='20' fill='%23A83848' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pepijn Scheer",
+        "jobTitle": "Fullstack Developer",
+        "url": "https://pepijnscheer.nl/",
+        "image": "https://pepijnscheer.nl/og-image.jpg",
+        "knowsAbout": ["React", "TypeScript", "Node.js", "GraphQL"]
+      }
+    </script>
   </head>
   <body>
     <script>
-      // Set theme before first paint to avoid a flash. Light is the
-      // default; dark only when the visitor chose it earlier.
+      // Set theme before first paint to avoid a flash. Dark is the
+      // default; light only when the visitor chose it earlier.
       try {
         document.documentElement.dataset.theme =
-          localStorage.getItem('theme') || 'light';
+          localStorage.getItem('theme') || 'dark';
       } catch (e) {}
     </script>
     <div id="root"></div>

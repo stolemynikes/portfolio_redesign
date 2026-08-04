@@ -108,7 +108,12 @@ export default function Projects() {
               ) : (
                 <span className="shelf-cover shelf-cover-mockup" aria-hidden="true">
                   {p.image ? (
-                    <img src={p.image} alt="" loading="lazy" className="shelf-cover-image" />
+                    <img
+                      src={p.image}
+                      alt={`Schermafbeelding van ${p.title}`}
+                      loading="lazy"
+                      className="shelf-cover-image"
+                    />
                   ) : (
                     <span className="label shelf-cover-placeholder">screenshot volgt</span>
                   )}

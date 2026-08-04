@@ -8,4 +8,7 @@ export default defineConfig({
     // Allow Cloudflare quick-tunnel hostnames to reach the preview server
     allowedHosts: ['.trycloudflare.com'],
   },
+  build: {
+    sourcemap: true,
+  },
 })

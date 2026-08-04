@@ -27,7 +27,7 @@ export default function Sidebar() {
   return (
     <>
       <aside className="sidebar">
-        <a href="#top" className="sidebar-logo" aria-label="Naar boven">
+        <a href="#top" className="sidebar-logo" aria-label="Pepijn, naar boven">
           Pepijn<span className="sidebar-logo-accent">.</span>
         </a>
 

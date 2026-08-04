@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 const COLORS = [
   { name: 'bg', value: '#F8F1E7', varName: '--c-bg' },
   { name: 'ink', value: '#282320', varName: '--c-ink' },
@@ -8,7 +10,24 @@ const COLORS = [
 
 const SPACES = ['--sp-1', '--sp-2', '--sp-3', '--sp-4', '--sp-5', '--sp-6', '--sp-section'];
 
+/** Internal reference page — keep it out of search results. */
+function useNoindex() {
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    const prevTitle = document.title;
+    document.title = 'Styleguide — intern';
+    return () => {
+      meta.remove();
+      document.title = prevTitle;
+    };
+  }, []);
+}
+
 export default function Styleguide() {
+  useNoindex();
   return (
     <main className="content" style={{ maxWidth: 1200, margin: '0 auto', paddingBlock: '4rem' }}>
       <p className="label">Styleguide, design tokens</p>
