@@ -7,5 +7,14 @@ services:
         VITE_APERO_API_KEY: ${VITE_APERO_API_KEY}
         VITE_APERO_PROJECT_ID: ${VITE_APERO_PROJECT_ID}
     restart: unless-stopped
-    ports:
-      - "8080:80"
+    # Reached only via the shared Caddy reverse proxy (see
+    # ~/Dev/server-infra) — no host port published. Uncomment for
+    # local debugging without the proxy in front:
+    # ports:
+    #   - "8080:80"
+    networks:
+      - webproxy
+
+networks:
+  webproxy:
+    external: true
