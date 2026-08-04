@@ -37,6 +37,16 @@ const FALLBACK_PROJECTS: Project[] = [
 
 const hasMeta = (p: Project) => Boolean(p.year || p.description || p.stack?.length);
 
+/** Apero CMS is always shown first, wherever the API returns it. */
+function withAperoFirst(list: Project[]): Project[] {
+  const i = list.findIndex((p) => p.title.trim().toLowerCase() === 'apero cms');
+  if (i <= 0) return list;
+  const copy = [...list];
+  const [entry] = copy.splice(i, 1);
+  copy.unshift(entry);
+  return copy;
+}
+
 /**
  * Hover-expand project shelf (Skiper35-style): panels share a row, the
  * active one springs open while siblings compress. Hover expands on
@@ -48,7 +58,7 @@ export default function Projects() {
 
   useEffect(() => {
     fetchProjects().then((live) => {
-      if (live) setProjects(live);
+      if (live) setProjects(withAperoFirst(live));
     });
   }, []);
 
@@ -90,27 +100,20 @@ export default function Projects() {
                 {p.year ? `, ${p.year}` : ''}
               </span>
 
-              {/* Cover art */}
+              {/* Cover art — full-bleed photo, always visible (collapsed
+                  spine and expanded alike), per the shelf's original
+                  hover-reveal-gallery reference */}
               {p.variant === 'abstract' ? (
                 <span className="shelf-cover shelf-cover-abstract" aria-hidden="true">
                   <span className="shelf-ghost">{p.title}</span>
                 </span>
               ) : (
                 <span className="shelf-cover shelf-cover-mockup" aria-hidden="true">
-                  <span className="shelf-mockup">
-                    <span className="shelf-mockup-chrome">
-                      <i />
-                      <i />
-                      <i />
-                    </span>
-                    <span className="shelf-mockup-viewport">
-                      {p.image ? (
-                        <img src={p.image} alt="" loading="lazy" />
-                      ) : (
-                        <span className="label">screenshot volgt</span>
-                      )}
-                    </span>
-                  </span>
+                  {p.image ? (
+                    <img src={p.image} alt="" loading="lazy" className="shelf-cover-image" />
+                  ) : (
+                    <span className="label shelf-cover-placeholder">screenshot volgt</span>
+                  )}
                 </span>
               )}
 
