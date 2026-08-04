@@ -35,8 +35,6 @@ const FALLBACK_PROJECTS: Project[] = [
   },
 ];
 
-const hasMeta = (p: Project) => Boolean(p.year || p.description || p.stack?.length);
-
 /** Apero CMS is always shown first, wherever the API returns it. */
 function withAperoFirst(list: Project[]): Project[] {
   const i = list.findIndex((p) => p.title.trim().toLowerCase() === 'apero cms');
@@ -127,9 +125,7 @@ export default function Projects() {
                 {p.stack?.length ? (
                   <span className="label shelf-stack">{p.stack.join(' · ')}</span>
                 ) : null}
-                {!hasMeta(p) && p.link && (
-                  <span className="label shelf-visit">Bekijk project ↗</span>
-                )}
+                {p.link && <span className="label shelf-visit">Bekijk project ↗</span>}
               </span>
             </>
           );

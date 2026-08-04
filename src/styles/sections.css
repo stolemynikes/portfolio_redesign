@@ -412,7 +412,6 @@ body.menu-open .floating-contact {
 }
 .contact-heading {
   margin-top: var(--sp-1);
-  max-width: 12ch; /* forces "Laten we" / "iets bouwen" — tuned, don't widen carelessly */
 }
 .contact-sub {
   max-width: 42ch;

@@ -92,7 +92,7 @@ export default function Footer() {
             Contact
           </p>
           <h2 className="heading-2 contact-heading" data-reveal="lines">
-            Laten we iets bouwen
+            Contact opnemen?
           </h2>
           <p className="contact-sub" data-reveal="fade">
             Een project, een vraag of gewoon even sparren? Laat een bericht
