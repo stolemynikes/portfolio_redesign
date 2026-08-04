@@ -14,9 +14,7 @@ export default function About() {
           <p>
             Ik ben Pepijn, fullstack developer met een voorkeur voor de
             volledige breedte: van datamodel en API tot interface. Bij een
-            idee begin ik liever met bouwen dan met praten; werkende software
-            is voor mij de beste manier om te leren én om te laten zien wat
-            kan.
+            idee begin ik liever met bouwen dan met praten.
           </p>
           <p>
             Ik werk het meest met React, TypeScript en Node, en voel me thuis

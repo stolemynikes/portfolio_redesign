@@ -22,6 +22,8 @@ interface ApiEntryData {
   naam?: string;
   link?: string;
   image?: ApiImage;
+  /** Comma-separated in the CMS; optional per entry. */
+  tags?: string;
 }
 
 interface ApiEntry {
@@ -35,7 +37,14 @@ function str(v: unknown): string | undefined {
   return typeof v === 'string' && v.trim() ? v.trim() : undefined;
 }
 
-/** Matches the "project" collection's actual shape: naam / link / image. */
+/** "React, Node, GraphQL" -> ["React", "Node", "GraphQL"]; undefined if absent. */
+function strArray(v: unknown): string[] | undefined {
+  if (typeof v !== 'string' || !v.trim()) return undefined;
+  const arr = v.split(',').map((s) => s.trim()).filter(Boolean);
+  return arr.length ? arr : undefined;
+}
+
+/** Matches the "project" collection's actual shape: naam / link / image / tags. */
 function normalize(entry: ApiEntry): ApiProject | null {
   const d = entry.data ?? {};
   const title = str(d.naam);
@@ -49,6 +58,7 @@ function normalize(entry: ApiEntry): ApiProject | null {
     variant: image ? 'mockup' : 'abstract',
     image,
     link: str(d.link),
+    stack: strArray(d.tags),
   };
 }
 
