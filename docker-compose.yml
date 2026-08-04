@@ -1,0 +1,11 @@
+services:
+  portfolio:
+    build:
+      context: .
+      args:
+        VITE_APERO_API_URL: ${VITE_APERO_API_URL}
+        VITE_APERO_API_KEY: ${VITE_APERO_API_KEY}
+        VITE_APERO_PROJECT_ID: ${VITE_APERO_PROJECT_ID}
+    restart: unless-stopped
+    ports:
+      - "8080:80"
