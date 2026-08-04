@@ -380,6 +380,9 @@ body.menu-open .floating-contact {
 .shelf-stack {
   color: rgba(248, 241, 231, 0.7);
 }
+.shelf-visit {
+  color: rgba(248, 241, 231, 0.85);
+}
 
 /* ---------- Floating glass contact pill ---------- */
 .floating-contact {

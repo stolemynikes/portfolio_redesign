@@ -25,3 +25,8 @@ dist-ssr
 
 # Claude Code local config/skills
 .claude/
+
+# Local env / secrets — never commit
+.env
+.env.*
+!.env.example

@@ -38,7 +38,7 @@ export default function Hero() {
 
       <div className="grid-12 hero-lower">
         <p className="hero-intro label">
-          Gedreven fullstack developer — ik leer door te maken.
+          Gedreven fullstack developer, ik leer door te maken.
         </p>
 
         <div className="hero-media" data-parallax="8">

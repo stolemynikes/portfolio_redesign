@@ -11,7 +11,7 @@ const SPACES = ['--sp-1', '--sp-2', '--sp-3', '--sp-4', '--sp-5', '--sp-6', '--s
 export default function Styleguide() {
   return (
     <main className="content" style={{ maxWidth: 1200, margin: '0 auto', paddingBlock: '4rem' }}>
-      <p className="label">Styleguide — design tokens</p>
+      <p className="label">Styleguide, design tokens</p>
 
       <section>
         <p className="label" style={{ marginBottom: '1rem' }}>Kleur</p>
@@ -38,10 +38,10 @@ export default function Styleguide() {
         <h1 className="heading-1">Heading 1</h1>
         <h2 className="heading-2">Heading 2</h2>
         <p style={{ maxWidth: '56ch', marginTop: '1rem' }}>
-          Body — General Sans. Ik bouw digitale producten van idee tot deploy,
+          Body, General Sans. Ik bouw digitale producten van idee tot deploy,
           met aandacht voor zowel techniek als gebruikerservaring.
         </p>
-        <p className="label" style={{ marginTop: '1rem' }}>Label — uppercase, letterspaced</p>
+        <p className="label" style={{ marginTop: '1rem' }}>Label, uppercase, letterspaced</p>
       </section>
 
       <section>

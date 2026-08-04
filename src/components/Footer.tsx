@@ -22,7 +22,7 @@ function validate(values: { naam: string; email: string; bericht: string }): Err
   if (!values.email.trim()) e.email = 'Vul je e-mailadres in.';
   else if (!EMAIL_RE.test(values.email)) e.email = 'Dit lijkt geen geldig e-mailadres.';
   if (!values.bericht.trim()) e.bericht = 'Schrijf een kort bericht.';
-  else if (values.bericht.trim().length < 10) e.bericht = 'Iets meer context helpt — min. 10 tekens.';
+  else if (values.bericht.trim().length < 10) e.bericht = 'Iets meer context helpt, min. 10 tekens.';
   return e;
 }
 
@@ -44,8 +44,8 @@ export default function Footer() {
   };
 
   const mailtoFallback = () => {
-    const body = encodeURIComponent(`${values.bericht}\n\n— ${values.naam}`);
-    const subject = encodeURIComponent(`Bericht via portfolio — ${values.naam}`);
+    const body = encodeURIComponent(`${values.bericht}\n\n${values.naam}`);
+    const subject = encodeURIComponent(`Bericht via portfolio, ${values.naam}`);
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
@@ -70,7 +70,7 @@ export default function Footer() {
           name: values.naam,
           email: values.email,
           message: values.bericht,
-          _subject: `Bericht via portfolio — ${values.naam}`,
+          _subject: `Bericht via portfolio, ${values.naam}`,
           _template: 'box',
           _captcha: 'false',
         }),
@@ -96,7 +96,7 @@ export default function Footer() {
           </h2>
           <p className="contact-sub" data-reveal="fade">
             Een project, een vraag of gewoon even sparren? Laat een bericht
-            achter — ik reageer meestal binnen een dag.
+            achter. Ik reageer meestal binnen een dag.
           </p>
         </div>
 
