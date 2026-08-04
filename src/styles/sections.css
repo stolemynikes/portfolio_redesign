@@ -202,7 +202,7 @@ body.menu-open .floating-contact {
 .shelf {
   display: flex;
   gap: clamp(0.6rem, 1vw, 1rem);
-  height: clamp(420px, 62vh, 580px);
+  height: clamp(520px, 78vh, 760px);
 }
 
 .shelf-item {
