@@ -156,11 +156,14 @@ body.menu-open .floating-contact {
   line-height: 1.9;
   max-width: 34ch;
   text-wrap: balance;
+  /* Optical alignment: cancel the half-leading above the first line so
+     the letter tops sit on the same line as the portrait's top edge,
+     not 6px below it. */
+  margin-top: calc((1em - 1lh) / 2);
 }
 
 .hero-media {
   grid-column: 7 / 13;
-  margin-top: calc(-1 * var(--sp-4));
 }
 
 .hero-portrait {
@@ -654,6 +657,7 @@ body.menu-open .floating-contact {
   }
   .hero-intro {
     grid-column: 1 / -1;
+    margin-top: 0; /* stacked layout: no portrait to optically align to */
   }
   .hero-media {
     grid-column: 1 / -1;
